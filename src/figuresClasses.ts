@@ -1,18 +1,22 @@
 export interface Figure {
-  color: string;
+  color: 'red' | 'green' | 'blue';
   getArea(): number;
-  shape: string;
+  shape: 'triangle' | 'circle' | 'rectangle';
 }
 
 export class Triangle implements Figure {
-  public shape: string = 'triangle';
+  public shape: 'triangle' = 'triangle';
 
   constructor(
-    public color: string,
+    public color: 'red' | 'green' | 'blue',
     public a: number,
     public b: number,
     public c: number,
   ) {
+    if (!['red', 'green', 'blue'].includes(color)) {
+      throw new Error('color must be one of: red, green or blue');
+    }
+
     if (a <= 0 || b <= 0 || c <= 0) {
       throw new Error('sides must be greater than 0');
     }
@@ -35,12 +39,16 @@ export class Triangle implements Figure {
 }
 
 export class Circle implements Figure {
-  public shape: string = 'circle';
+  public shape: 'circle' = 'circle';
 
   constructor(
-    public color: string,
+    public color: 'red' | 'green' | 'blue',
     public radius: number,
   ) {
+    if (!['red', 'green', 'blue'].includes(color)) {
+      throw new Error('color must be one of: red, green or blue');
+    }
+
     if (radius <= 0) {
       throw new Error('radius must be greater than 0');
     }
@@ -54,13 +62,17 @@ export class Circle implements Figure {
 }
 
 export class Rectangle implements Figure {
-  public shape: string = 'rectangle';
+  public shape: 'rectangle' = 'rectangle';
 
   constructor(
-    public color: string,
+    public color: 'red' | 'green' | 'blue',
     public width: number,
     public height: number,
   ) {
+    if (!['red', 'green', 'blue'].includes(color)) {
+      throw new Error('color must be one of: red, green or blue');
+    }
+
     if (width <= 0 || height <= 0) {
       throw new Error('width and height must be greater than 0');
     }
