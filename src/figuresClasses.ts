@@ -18,13 +18,13 @@ export class Triangle implements Figure {
     }
 
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('sides must be greater than 0');
+      throw new Error(`sides ${a}, ${b} and ${c} must be greater than 0`);
     }
 
     const longest = Math.max(a, b, c);
 
     if (longest >= a + b + c - longest) {
-      throw new Error(`sides ${a}, ${b}, ${c} can't form triangle`);
+      throw new Error(`sides ${a}, ${b} and ${c} can't form triangle`);
     }
   }
 
